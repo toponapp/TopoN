@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopoN - Application Topographique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .phone-mockup {
+            background: white;
+            border-radius: 30px;
+            padding: 20px;
+            margin: 2rem auto;
+            max-width: 300px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .app-header {
+            background: #7c4dff;
+            color: white;
+            padding: 15px;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .app-content {
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .feature-btn {
+            display: block;
+            background: #7c4dff;
+            color: white;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1rem;
+            text-align: center;
+            cursor: default;
+        }
+
+        .features {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 4px solid #7c4dff;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #7c4dff;
+        }
+
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .about-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .about-features li:last-child {
+            border-bottom: none;
+        }
+
+        .about-features li::before {
+            content: "✓";
+            color: #7c4dff;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .download {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .download-info {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        .contact {
+            padding: 80px 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem auto;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-info div {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #ffd700;
+            color: #333;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            margin: 10px;
+        }
+
+        .download-btn:hover {
+            background: #ffed4a;
+            transform: translateY(-2px);
+        }
+
+        .contact-info a {
+            color: #7c4dff;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .phone-mockup {
+                max-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>TopoN</h1>
+            <p>Application de calculs topographiques avancés</p>
+            <p>Pour ingénieurs géomètres au Maroc</p>
+            
+            <div class="phone-mockup">
+                <div class="app-header">TopoN</div>
+                <div class="app-content">
+                    <div class="feature-btn">Détermination de mappe</div>
+                    <div class="feature-btn">Calcul gisement et distance</div>
+                    <div class="feature-btn">Calcul de rayonnement</div>
+                    <div class="feature-btn">Intersection de deux droites</div>
+                    <div class="feature-btn">Rétablissement</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Fonctionnalités Principales</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Détermination de mappe</h3>
+                    <p>Calculs précis pour déterminer la position des points sur les cartes topographiques avec transformation de coordonnées conformes aux normes marocaines.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📐</div>
+                    <h3>Calcul gisement et distance</h3>
+                    <p>Calculs des gisements et distances entre points avec une précision géodésique optimale pour vos levés topographiques professionnels.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Calcul de rayonnement</h3>
+                    <p>Détermination de positions de points en utilisant la méthode de rayonnement topographique classique avec interface intuitive.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">✂️</div>
+                    <h3>Intersection de deux droites</h3>
+                    <p>Calcul des points d'intersection entre droites avec méthodes mathématiques avancées et précision millimétrique.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Rétablissement</h3>
+                    <p>Opérations de rétablissement de points et correction d'erreurs topographiques avec algorithmes optimisés.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Performance et Précision</h3>
+                    <p>Interface intuitive avec résultats instantanés et précision professionnelle adaptée aux standards géodésiques marocains.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">À Propos de TopoN</h2>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>TopoN est une application mobile spécialement conçue pour les ingénieurs géomètres et topographes travaillant au Maroc. Elle intègre les méthodes de calcul topographique les plus courantes utilisées dans la pratique professionnelle.</p>
+                    
+                    <p>Développée par des professionnels du secteur, l'application respecte les normes et systèmes de coordonnées en vigueur au Maroc, notamment le système Lambert Conformal Conic et les projections UTM.</p>
+                    
+                    <p>Que vous soyez en bureau d'études, sur le terrain, ou en formation, TopoN vous accompagne avec des outils de calcul fiables et une interface pensée pour l'efficacité.</p>
+                </div>
+                
+                <div class="about-features">
+                    <h3>Avantages Techniques</h3>
+                    <ul>
+                        <li>Calculs conformes aux normes géodésiques marocaines</li>
+                        <li>Support des systèmes de coordonnées locaux</li>
+                        <li>Interface bilingue Français/Arabe</li>
+                        <li>Fonctionnement hors connexion</li>
+                        <li>Sauvegarde automatique des calculs</li>
+                        <li>Export des résultats en format texte</li>
+                        <li>Validation des données d'entrée</li>
+                        <li>Aide contextuelle intégrée</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download">
+        <div class="container">
+            <h2 class="section-title">Télécharger TopoN</h2>
+            
+            <div class="download-info">
+                <h3>📱 Application gratuite disponible</h3>
+                <p><strong>Plateformes :</strong> Android et iOS</p>
+                <p><strong>Compatibilité :</strong> Android 5.0+ et iOS 12.0+</p>
+                <p><strong>Taille :</strong> ~15 MB</p>
+                <p><strong>Version actuelle :</strong> 2.1.0</p>
+                <p><strong>Langues :</strong> Français, Arabe</p>
+                <p><strong>Prix :</strong> Gratuit</p>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="topon.apk" class="download-btn" download>
+                        📱 Télécharger APK Android
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact & Support</h2>
+            
+            <div class="contact-info">
+                <div>
+                    <h4>📧 Support Technique</h4>
+                    <p><a href="mailto:support@toponapp.ma">support@toponapp.ma</a></p>
+                </div>
+                
+                <div>
+                    <h4>📧 Contact Général</h4>
+                    <p><a href="mailto:contact@toponapp.ma">contact@toponapp.ma</a></p>
+                </div>
+                
+                <div>
+                    <h4>🤝 Partenariats</h4>
+                    <p><a href="mailto:partenaires@toponapp.ma">partenaires@toponapp.ma</a></p>
+                </div>
+                
+                <div>
+                    <h4>⏰ Temps de réponse</h4>
+                    <p>24-48 heures ouvrées</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 TopoN. Tous droits réservés.</p>
+            <p>Application spécialisée en calculs topographiques pour ingénieurs géomètres</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                Conforme aux normes géodésiques marocaines
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
