@@ -2,14 +2,13 @@
 <html lang="fr">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N24M6CZ65K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-N24M6CZ65K');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N24M6CZ65K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N24M6CZ65K');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TopoN - Application Topographique</title>
@@ -20,10 +19,15 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
+            padding-top: 70px;
         }
 
         .container {
@@ -32,10 +36,78 @@
             padding: 0 20px;
         }
 
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(124, 77, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0;
+            box-shadow: 0 2px 20px rgba(124, 77, 255, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
         header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 60px 0;
+            padding: 80px 0 60px;
             text-align: center;
         }
 
@@ -49,44 +121,6 @@
             font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.9;
-        }
-
-        .phone-mockup {
-            background: white;
-            border-radius: 30px;
-            padding: 20px;
-            margin: 2rem auto;
-            max-width: 300px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .app-header {
-            background: #7c4dff;
-            color: white;
-            padding: 15px;
-            border-radius: 15px 15px 0 0;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .app-content {
-            padding: 20px;
-            background: #f5f5f5;
-            border-radius: 0 0 15px 15px;
-        }
-
-        .feature-btn {
-            display: block;
-            background: #7c4dff;
-            color: white;
-            padding: 15px 20px;
-            margin: 10px 0;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 1rem;
-            text-align: center;
-            cursor: default;
         }
 
         .features {
@@ -115,6 +149,11 @@
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border-left: 4px solid #7c4dff;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
         }
 
         .feature-icon {
@@ -128,9 +167,59 @@
             margin-bottom: 1rem;
         }
 
-        .about {
+        /* Screenshots Section - Responsive */
+        .screenshots {
             padding: 80px 0;
             background: white;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .screenshot-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-10px);
+            border-color: #7c4dff;
+            box-shadow: 0 25px 45px rgba(124,77,255,0.2);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .screenshot-card h4 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .screenshot-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .about {
+            padding: 80px 0;
+            background: #f8f9fa;
         }
 
         .about-content {
@@ -146,9 +235,10 @@
         }
 
         .about-features {
-            background: #f8f9fa;
+            background: white;
             padding: 2rem;
             border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .about-features ul {
@@ -157,7 +247,7 @@
         }
 
         .about-features li {
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             border-bottom: 1px solid #e0e0e0;
         }
 
@@ -190,12 +280,12 @@
 
         .contact {
             padding: 80px 0;
-            background: #f8f9fa;
+            background: white;
             text-align: center;
         }
 
         .contact-info {
-            background: white;
+            background: #f8f9fa;
             padding: 2rem;
             border-radius: 15px;
             margin: 2rem auto;
@@ -206,7 +296,7 @@
         .contact-info div {
             margin: 1rem 0;
             padding: 1rem;
-            background: #f8f9fa;
+            background: white;
             border-radius: 10px;
         }
 
@@ -219,7 +309,7 @@
             text-decoration: none;
             font-size: 1.1rem;
             font-weight: bold;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
             margin: 10px;
         }
 
@@ -244,44 +334,150 @@
             padding: 2rem 0;
         }
 
+        /* Mobile Responsive */
         @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+
+            .nav-container {
+                padding: 0.8rem 1rem;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            }
+
+            .nav-logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(124, 77, 255, 0.98);
+                backdrop-filter: blur(10px);
+                width: 100%;
+                text-align: center;
+                transition: left 0.3s ease;
+                padding: 2rem 0;
+                box-shadow: 0 4px 20px rgba(124, 77, 255, 0.3);
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 0.5rem 0;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                border-radius: 10px;
+                margin: 0 1rem;
+            }
+
+            .nav-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .nav-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
             header h1 {
                 font-size: 2.5rem;
             }
-            
+
+            header p {
+                font-size: 1.1rem;
+            }
+
             .features-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .phone-mockup {
-                max-width: 280px;
+
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .screenshot-card {
+                padding: 1.5rem;
+            }
+
+            .screenshot-card img {
+                max-width: 160px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            header {
+                padding: 60px 0 40px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .screenshot-card img {
+                max-width: 140px;
+            }
+
+            .features, .about, .download, .contact, .screenshots {
+                padding: 60px 0;
             }
         }
     </style>
 </head>
-    
 <body>
-    <header>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">TopoN</a>
+            <ul class="nav-menu">
+                <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+                <li><a href="#apercu">Aperçu</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#telecharger">Télécharger</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home">
         <div class="container">
-            <h1>TopoN</h1>
             <p>Application de calculs topographiques</p>
             <p>Pour les géomètres au Maroc</p>
-            <!--
-            <div class="phone-mockup">
-                <div class="app-header">TopoN</div>
-                <div class="app-content">
-                    <div class="feature-btn">Détermination de mappe</div>
-                    <div class="feature-btn">Calcul gisement et distance</div>
-                    <div class="feature-btn">Calcul de rayonnement</div>
-                    <div class="feature-btn">Intersection de deux droites</div>
-                    <div class="feature-btn">Rétablissement</div>
-                </div>
-            </div>
-            -->
         </div>
     </header>
 
-    <section class="features">
+    <section class="features" id="fonctionnalites">
         <div class="container">
             <h2 class="section-title">Fonctionnalités Principales</h2>
             
@@ -289,40 +485,32 @@
                 <div class="feature-card">
                     <div class="feature-icon">🗺️</div>
                     <h3>Détermination de mappe</h3>
-                  <!-- <p>Calculs précis pour déterminer la position des points sur les cartes topographiques avec transformation de coordonnées conformes aux normes marocaines.</p> -->
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">📐</div>
                     <h3>Calcul gisement et distance</h3>
-                    <!-- <p>Calculs des gisements et distances entre points avec une précision géodésique optimale pour vos levés topographiques professionnels.</p> -->
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">🎯</div>
                     <h3>Calcul de rayonnement</h3>
-                    <!--  <p>Détermination de positions de points en utilisant la méthode de rayonnement topographique classique avec interface intuitive.</p> -->
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <svg width="60" height="60" viewBox="0 0 100 100" style="margin: 0 auto;">
-                            <!-- Ligne bleue -->
                             <line x1="10" y1="10" x2="90" y2="90" stroke="#0066ff" stroke-width="3"/>
-                            <!-- Ligne verte -->
                             <line x1="90" y1="10" x2="10" y2="90" stroke="#00aa00" stroke-width="3"/>
-                            <!-- Point d'intersection rouge -->
                             <circle cx="50" cy="50" r="4" fill="#ff0000"/>
                         </svg>
                     </div>
                     <h3>Intersection de deux droites</h3>
-                    <!--   <p>Calcul des points d'intersection entre droites avec méthodes mathématiques avancées et précision millimétrique.</p> -->
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">🔄</div>
                     <h3>Rétablissement</h3>
-                    <!--  <p>Opérations de rétablissement de points et correction d'erreurs topographiques avec algorithmes optimisés.</p> -->
                 </div>
                 
                 <div class="feature-card">
@@ -332,7 +520,8 @@
             </div>
         </div>
     </section>
-    <section class="screenshots">
+
+    <section class="screenshots" id="apercu">
         <div class="container">
             <h2 class="section-title">Aperçu de l'Application</h2>
             <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: #666;">
@@ -355,13 +544,13 @@
                 <div class="screenshot-card">
                     <img src="screenshot3.png" alt="Calcul d'intersection TopoN" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjM1MCIgdmlld0JveD0iMCAwIDIwMCAzNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMzUwIiBmaWxsPSIjZjVmNWY1IiBzdHJva2U9IiNkZGQiLz4KPHN2ZyB4PSI1MCIgeT0iODAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTQwIiB2aWV3Qm94PSIwIDAgMTAwIDE0MCI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMzAiIGZpbGw9IiM3YzRkZmYiIHJ4PSI1Ii8+Cjx0ZXh0IHg9IjUwIiB5PSIyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iMTAiPlLDqXN1bHRhdHM8L3RleHQ+CjxyZWN0IHk9IjQwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjZThmOWY1IiBzdHJva2U9IiMwMGFhMDAiIHJ4PSIzIi8+Cjx0ZXh0IHg9IjEwIiB5PSI1MyIgZmlsbD0iIzAwNzc3NyIgZm9udC1zaXplPSI4Ij5EaXN0YW5jZTogMTIzLjQ1bTwvdGV4dD4KPHJlY3QgeT0iNzAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMjAiIGZpbGw9IiNlOGY5ZjUiIHN0cm9rZT0iIzAwYWEwMCIgcng9IjMiLz4KPHRleHQgeD0iMTAiIHk9IjgzIiBmaWxsPSIjMDA3Nzc3IiBmb250LXNpemU9IjgiPkdpc2VtZW50OiA0NS4yNTDCsDwvdGV4dD4KPHJlY3QgeT0iMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjZmZkNzAwIiByeD0iMyIvPgo8dGV4dCB4PSIzMCIgeT0iMTEzIiBmaWxsPSIjMzMzIiBmb250LXNpemU9IjgiPkV4cG9ydGVyPC90ZXh0Pgo8L3N2Zz4KPHR leHQgeD0iMTAwIiB5PSIyNjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5OTkiIGZvbnQtc2l6ZT0iMTIiPlLDqXN1bHRhdHMgZGUgY2FsY3VsPC90ZXh0Pgo8L3N2Zz4='" />
                     <h4>Intersection de deux droites</h4>
-                    <p>Interface de calcul d'intersection de deux droites avec champs de saisie et résultats</p>
+                    <p>Interface de calcul d'intersection de deux droites avec champs de saisie</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="about">
+    <section class="about" id="apropos">
         <div class="container">
             <h2 class="section-title">À Propos de TopoN</h2>
             
@@ -388,16 +577,16 @@
         </div>
     </section>
 
-    <section class="download">
+    <section class="download" id="telecharger">
         <div class="container">
             <h2 class="section-title">Télécharger TopoN</h2>
             
             <div class="download-info">
                 <h3>📱 Application gratuite disponible</h3>
-                <p><strong>Plateformes :</strong> Android </p>
+                <p><strong>Plateformes :</strong> Android</p>
                 <p><strong>Compatibilité :</strong> Android 7.0+</p>
                 <p><strong>Taille :</strong> ~3 MB</p>
-                <p><strong>Version actuelle :</strong> 1.0</p>
+                <p><strong>Version actuelle :</strong> 1.1</p>
                 <p><strong>Langues :</strong> Français</p>
                 <p><strong>Prix :</strong> Gratuit</p>
                 
@@ -410,15 +599,14 @@
         </div>
     </section>
 
-    <section class="contact">
+    <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title">Contact</h2>
             
             <div class="contact-info">
-                
                 <div>
                     <h4>📧 Contact Général</h4>
-                    <p><a href="mailto:macdayir@gmail.com">macdayir@gmail.com </a></p>
+                    <p><a href="mailto:macdayir@gmail.com">macdayir@gmail.com</a></p>
                 </div>
             </div>
         </div>
@@ -430,6 +618,77 @@
             <p>Application spécialisée en calculs topographiques</p>
         </div>
     </footer>
-    
+
+    <script>
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation Toggle
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    navToggle.classList.toggle('active');
+                });
+            }
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navMenu && navToggle) {
+                        navMenu.classList.remove('active');
+                        navToggle.classList.remove('active');
+                    }
+                });
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        const offsetTop = target.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add scroll effect to navigation
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('nav');
+                if (nav) {
+                    if (window.scrollY > 50) {
+                        nav.style.background = 'rgba(124, 77, 255, 0.98)';
+                        nav.style.boxShadow = '0 4px 20px rgba(124, 77, 255, 0.3)';
+                    } else {
+                        nav.style.background = 'rgba(124, 77, 255, 0.95)';
+                        nav.style.boxShadow = '0 2px 20px rgba(124, 77, 255, 0.2)';
+                    }
+                }
+            });
+
+            // Track APK download
+            const downloadBtn = document.querySelector('.download-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function() {
+                    // Google Analytics tracking
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'download', {
+                            'event_category': 'APK',
+                            'event_label': 'TopoN v1.1',
+                            'value': 1
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>
