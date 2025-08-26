@@ -12,6 +12,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TopoN - Application Topographique</title>
+     <!-- SEO -->
+    <meta name="description" content="TopoN - Application gratuite de calculs topographiques pour géomètres au Maroc. Téléchargez la dernière version APK Android.">
+    <meta name="keywords" content="topographie, géomètre, Maroc, application topographique, calculs topographiques, APK Android, TopoN">
     <style>
         * {
             margin: 0;
@@ -566,7 +569,7 @@
                 <div class="about-features">
                     <h3>Avantages Techniques</h3>
                     <ul>
-                        <li>Calculs conformes aux normes cadastrale</li>
+                        <li>Calculs conformes aux normes cadastrales</li>
                         <li>Fonctionnement hors connexion</li>
                         <li>Sauvegarde automatique des calculs</li>
                         <li>Export des résultats en format texte</li>
@@ -586,14 +589,14 @@
                 <p><strong>Plateformes :</strong> Android</p>
                 <p><strong>Compatibilité :</strong> Android 7.0+</p>
                 <p><strong>Taille :</strong> ~3 MB</p>
-                <p><strong>Version actuelle :</strong> 1.1</p>
+                <p><strong>Version actuelle :</strong> <span id="apkVersion"></span></p>
                 <p><strong>Langues :</strong> Français</p>
                 <p><strong>Prix :</strong> Gratuit</p>
                 
                 <div style="margin-top: 2rem;">
-                    <a href="toponV1.1.apk" class="download-btn" download>
-                        📱 Télécharger APK Android
-                    </a>
+                  <a id="downloadBtn" class="download-btn" download>
+                       📱 Télécharger APK Android
+                  </a>
                 </div>
             </div>
         </div>
@@ -620,19 +623,18 @@
     </footer>
 
     <script>
-        // Wait for DOM to load
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile Navigation Toggle
             const navToggle = document.querySelector('.nav-toggle');
             const navMenu = document.querySelector('.nav-menu');
-
+        
             if (navToggle && navMenu) {
                 navToggle.addEventListener('click', function() {
                     navMenu.classList.toggle('active');
                     navToggle.classList.toggle('active');
                 });
             }
-
+        
             // Close mobile menu when clicking on a link
             document.querySelectorAll('.nav-menu a').forEach(link => {
                 link.addEventListener('click', function() {
@@ -642,7 +644,7 @@
                     }
                 });
             });
-
+        
             // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -658,7 +660,7 @@
                     }
                 });
             });
-
+        
             // Add scroll effect to navigation
             window.addEventListener('scroll', function() {
                 const nav = document.querySelector('nav');
@@ -672,17 +674,26 @@
                     }
                 }
             });
-
-            // Track APK download
-            const downloadBtn = document.querySelector('.download-btn');
+        
+            // -------- Paramètres de la version --------
+            const APK_VERSION = "1.1";
+            const APK_FILE = `toponV${APK_VERSION}.apk`;
+        
+            // -------- Mise à jour auto dans la page --------
+            const versionSpan = document.getElementById("apkVersion");
+            const downloadBtn = document.getElementById("downloadBtn");
+        
+            if (versionSpan) versionSpan.textContent = APK_VERSION;
             if (downloadBtn) {
+                downloadBtn.href = APK_FILE;
+        
+                // -------- Tracking des téléchargements --------
                 downloadBtn.addEventListener('click', function() {
-                    // Google Analytics tracking
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'download', {
-                            'event_category': 'APK',
-                            'event_label': 'TopoN v1.1',
-                            'value': 1
+                            event_category: 'APK',
+                            event_label: `TopoN v${APK_VERSION}`,
+                            value: 1
                         });
                     }
                 });
